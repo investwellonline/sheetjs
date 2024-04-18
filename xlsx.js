@@ -7650,7 +7650,7 @@ var fields = [], field = ({});
 			}
 		}
 	}
-	if(ft != 0x02) if(d.l < d.length && d[d.l++] != 0x1A) throw new Error("DBF EOF Marker missing " + (d.l-1) + " of " + d.length + " " + d[d.l-1].toString(16));
+	if(ft != 0x02) if(d.l < d.length && d[d.l++] != 0x1A) console.log("DBF EOF Marker missing " + (d.l-1) + " of " + d.length + " " + d[d.l-1].toString(16));
 	if(opts && opts.sheetRows) out = out.slice(0, opts.sheetRows);
 	opts.DBF = fields;
 	return out;
