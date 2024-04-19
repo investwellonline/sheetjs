@@ -209,13 +209,13 @@ XLSX.set_cptable(cptable);
 With [npm](https://www.npmjs.org/package/xlsx):
 
 ```bash
-$ npm install xlsx
+$ npm i node-xlsx-iwell
 ```
 
 By default, the module supports `require`:
 
 ```js
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 ```
 
 The module also ships with `xlsx.mjs` for use with `import`:
@@ -628,7 +628,7 @@ Here are a few common scenarios (click on each subtitle to see the code):
 `readFile` uses `fs.readFileSync` under the hood:
 
 ```js
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 
 var workbook = XLSX.readFile("test.xlsx");
 ```
@@ -823,7 +823,7 @@ The [`extendscript` demo](demos/extendscript/) includes a more complex example.
 
 ```js
 /* From the renderer process */
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 
 var workbook = XLSX.readFile(path);
 ```
@@ -915,7 +915,7 @@ For broader compatibility, third-party modules are recommended.
 [`request`](https://npm.im/request) requires a `null` encoding to yield Buffers:
 
 ```js
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 var request = require("request");
 
 request({url: url, encoding: null}, function(err, resp, body) {
@@ -975,7 +975,7 @@ and process the whole thing at the end:
 
 ```js
 var fs = require("fs");
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 
 function process_RS(stream, cb) {
   var buffers = [];
@@ -1319,7 +1319,7 @@ is to add the script to the page, parse the table in the page context, generate
 a `binary` workbook and send it back for further processing:
 
 ```js
-var XLSX = require('xlsx');
+var XLSX = require('node-xlsx-iwell');
 var page = require('webpage').create();
 
 /* this code will be run in the page */
@@ -1560,7 +1560,7 @@ covers the supported properties and behaviors.
 `writeFile` uses `fs.writeFileSync` in server environments:
 
 ```js
-var XLSX = require("xlsx");
+var XLSX = require("node-xlsx-iwell");
 
 /* output format determined by filename */
 XLSX.writeFile(workbook, "out.xlsb");
@@ -1704,7 +1704,7 @@ files to XLSB workbooks using [PhantomJS](https://phantomjs.org/). PhantomJS
 interface from the NodeJS `fs` module:
 
 ```js
-var XLSX = require('xlsx');
+var XLSX = require('node-xlsx-iwell');
 var fs = require('fs');
 
 /* generate a binary string */
