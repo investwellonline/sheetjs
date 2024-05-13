@@ -1,6 +1,6 @@
 {
 	"name": "node-xlsx-iwell",
-	"version": "0.18.12",
+	"version": "0.18.13",
 	"author": "Achal Sharma<Achal.sharma@investwellonline.com>",
 	"description": " Spreadsheet data parser and writer",
 	"keywords": [
