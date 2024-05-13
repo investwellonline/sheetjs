@@ -7751,10 +7751,7 @@ var fields = [], field = ({});
 					if(!memo) throw new Error("DBF Unexpected MEMO for type " + ft.toString(16));
 					out[R][C] = "##MEMO##" + (l7 ? parseInt(s.trim(), 10): dd.read_shift(4));
 					break;
-				case 'N':
-					s = s.replace(/\u0000/g,"").trim();
-					// NOTE: dBASE II interprets "  .  " as 0
-					if(s && s != ".") out[R][C] = +s || 0; break;
+				case 'N': out[R][C] = +s.replace(/\u0000/g,"").trim(); break;
 				case '@':
 					// NOTE: dBASE specs appear to be incorrect
 					out[R][C] = new Date(dd.read_shift(-8, 'f') - 0x388317533400);
