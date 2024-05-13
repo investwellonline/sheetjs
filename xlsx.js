@@ -4,7 +4,7 @@
 /*global global, exports, module, require:false, process:false, Buffer:false, ArrayBuffer:false, DataView:false, Deno:false, Set:false */
 var XLSX = {};
 function make_xlsx_lib(XLSX){
-XLSX.version = '0.18.12';
+XLSX.version = '0.18.14';
 var current_codepage = 1200, current_ansi = 1252;
 /*global cptable:true, window */
 var $cptable;
@@ -7751,10 +7751,7 @@ var fields = [], field = ({});
 					if(!memo) throw new Error("DBF Unexpected MEMO for type " + ft.toString(16));
 					out[R][C] = "##MEMO##" + (l7 ? parseInt(s.trim(), 10): dd.read_shift(4));
 					break;
-				case 'N':
-					s = s.replace(/\u0000/g,"").trim();
-					// NOTE: dBASE II interprets "  .  " as 0
-					if(s && s != ".") out[R][C] = +s || 0; break;
+				case 'N': out[R][C] = +s.replace(/\u0000/g,"").trim(); break;
 				case '@':
 					// NOTE: dBASE specs appear to be incorrect
 					out[R][C] = new Date(dd.read_shift(-8, 'f') - 0x388317533400);
@@ -7772,7 +7769,7 @@ var fields = [], field = ({});
 			}
 		}
 	}
-	if(ft != 0x02) if(d.l < d.length && d[d.l++] != 0x1A) throw new Error("DBF EOF Marker missing " + (d.l-1) + " of " + d.length + " " + d[d.l-1].toString(16));
+	if(ft != 0x02) if(d.l < d.length && d[d.l++] != 0x1A) console.log("DBF EOF Marker missing " + (d.l-1) + " of " + d.length + " " + d[d.l-1].toString(16));
 	if(opts && opts.sheetRows) out = out.slice(0, opts.sheetRows);
 	opts.DBF = fields;
 	return out;
